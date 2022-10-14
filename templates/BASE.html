@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--HTML-->
+    <meta charset="utf-8"/>
+    <title>ODSgames</title>
+    <!--fin HTML-->
+    
+    <!--CSS-->
+    <!--fin CSS-->
+  </head>
+  <body>
+    <!--HEADER-->
+    <header>
+      <!--LOGO-->
+      <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='img/ODSgames.png') }}" id=logo></a>
+      <!--fin LOGO-->
+      
+      <!--CUENTAS-->
+      <div>
+        <div id="noRegistrado">
+          <a href="#" class="botonRegistro" id="botonIniciarSesion">Iniciar Sesion</a>
+          <a href="#" class="botonRegistro" id="botonRegistrarse">Registrarse</a>
+        </div>
+        <div id="registrado" hidden>
+          <a href="#" id="Usuario">{%block USUARIO%}{%endblock%}</a><a href="#"><img src="" id="fotoUsuario"></a>
+        </div>
+      </div>
+      <!--fin CUENTAS-->
+    </header>
+    <!--fin HEADER-->
+    
+    <!--ARTICLE-->
+    <article>
+      {%block ARTICLE%}
+      {%endblock%}
+    </article>
+    <!--fin ARTICLE-->
+    
+    <!--FOOTER-->
+    <footer>
+      
+    </footer>
+    <!--fin FOOTER-->
+  </body>
+</html>
