@@ -1,0 +1,32 @@
+{%extends 'BASE.html'%}
+{%block CSS%}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/style/ingresarCuenta.css') }}">
+{%endblock%}
+{%block ARTICLE%}
+{% if proceso=="loguearse" %}
+<h1 class="tituloIngresarCuenta">Iniciar sesión</h1>
+{% else %}
+<h1 class="tituloIngresarCuenta">Registrarse</h1>
+{% endif %}
+<br/>
+<div id="liñita"></div>
+  {% if proceso=="loguearse" %}
+  <form action="{{ url_for('ingresarCuenta', proceso='loguearse') }}" method="POST">
+  {% else %}
+  <form action="{{ url_for('ingresarCuenta', proceso='reguistrarse') }}" method="POST">
+  {% endif %}
+  <lebel for="user">Nombre de usuario:</lebel><br/>
+  <input name="user" class="datoIngresarCuenta" type="text"/>
+  <br/><br/>
+  <lebel for="pass">Contraseña:</lebel><br/>
+  <input name="pass" class="datoIngresarCuenta" type="password"/>
+  <br/><br/>
+  {% if proceso=="loguearse" %}
+  <button type="submit" class="b">Iniciar Sesión</button>
+  {% else %}
+  <button type="submit" class="a">Registrarse</button>
+  {% endif %}
+  <p id="alerta">{{alerta}}</p>
+  </form>
+
+{%endblock%}

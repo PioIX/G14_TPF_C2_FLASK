@@ -1,0 +1,27 @@
+{%extends 'BASE.html'%}
+{%block CSS%}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/style/verdaderoOFalso.css') }}">
+{%endblock%}
+{%block ARTICLE%}
+<h1>ODS 5 - Verdadero o Falso</h1>
+<div id="tablero">
+  <p id="consigna">{{consigna}}</p>
+  
+  <div id="resultadosFinales" hidden>
+    <h1 id="puntajeVF">Tu puntaje es:</h1>
+    <div id="errores" hidden>
+      <h2>tus errores fueron:</h2>
+      <ol id="listadoErroresVF">
+      </ol>
+    </div>
+    <a href="{{ url_for('index') }}" id="botonIndex"><button class="c">Inicio</button></a>
+  </div>
+  
+  <div id="botonesVF">
+  <button onclick='corroborar("V")' class="c">Verdadero</button><button onclick='corroborar("F")' class="a">Falso</button>
+  </div>
+</div>                               
+{%endblock%}
+{%block JS%}
+<script src="static/script/verdaderoOFalso.js"></script>
+{%endblock%}

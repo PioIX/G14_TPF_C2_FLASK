@@ -1,0 +1,21 @@
+{%extends 'BASE.html'%}
+{%block CSS%}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/style/advertencia.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/style/BASE.css') }}">
+{%endblock%}
+{%block ARTICLE%}
+<h2 id="textoPantallaBloqueo">Recomendamos para jugar ODS {{ tituloJuego }} leer la seccion informativa</h2>
+<br/>
+<div id="botonesPantallaBloqueo">
+  <a href="{{ pdf }}" class="botonInfoJuego" id="botonInfo"><button class="b">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>Informate</button></a>
+  <button onclick="location.href='{{ url }}';"  class="a" id="botonJugar">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>Jugar</button>
+</div>
+{%endblock%}

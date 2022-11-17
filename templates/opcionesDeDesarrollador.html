@@ -1,0 +1,47 @@
+{%extends 'BASE.html'%}
+{%block CSS%}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/style/opcionesDeDesarrollador.css') }}">
+{%endblock%}
+{%block ARTICLE%}
+<h1>Opciones de desarrollador{}</h1>
+<div id='seccion'>
+  <button onclick="cambioSeccion('Juegos')">Juegos</button>
+  <button onclick="cambioSeccion('Cuentas')">Cuentas</button>
+</div>
+<div id='menuAccion'>
+  <div id="menuAccionJuegos">
+  <select onchange="cambioDeAccion('Juegos')" id="seleccionJuego">
+    {%for i in range(numeroDeJuegos)%}
+      <option>ODS{{listaJuegos[i][0]}} - {{listaJuegos[i][1]}}</option>
+    {%endfor%}
+  </select>
+  <select onchange="cambioDeAccion('Juegos')" id="seleccionParteBase">
+    <option>leyendas</option> 
+    <option>respuestas</option>
+    <option>titulo del juego</option>
+    <option>descripcion del juego</option>
+  </select>
+  <select onchange="cambioDeAccion('Juegos')" id="seleccionAccion">
+    <option id="opcion1">ver</option>
+    <option id="opcion2">editar</option>
+    <option id="opcion3">insertar</option>
+    <option id="opcion4">eliminar</option>
+  </select>
+  </div>
+  <div id="menuAccionCuentas" hidden>
+    <select onchange="cambioDeAccion('Cuentas')" id="seleccionAccionCuentas">
+      <option>ver</option>
+      <option>eliminar</option>
+    </select>
+  </div>
+</div>
+<br/>
+<div id='accion'>
+  {% for i in range(numeroLeyendas) %}
+  <li>{{leyendasODS[i][0]}}</li>
+  {% endfor %}
+</div>
+{%endblock%}
+{%block JS%}
+<script src="static/script/opcionesDeDesarrollador.js"></script>
+{%endblock%}

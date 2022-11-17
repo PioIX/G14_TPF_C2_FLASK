@@ -1,0 +1,63 @@
+article{
+  display:flex;
+  flex-wrap:nowrap;
+  align-items: center;
+  justify-content:space-between;
+  padding:10px;
+}
+
+#menuCambio{
+  display:flex;
+  align-items: center;
+}
+
+#menuCambio button{
+  color:#575757;
+  font-size: 40px;
+  margin:20px;
+  background:transparent;
+  border:none;
+}
+
+#infoJuego{
+  display:flex;
+  text-align: center;
+  flex-direction:column;
+}
+
+#infoJuego p{
+  margin:0px;
+  padding:10px;
+}
+
+#infoJuego div{
+  margin:0px;
+  padding:20px;
+}
+
+#tituloJuego{
+  font-size:36px;
+  text-decoration:bold;
+}
+
+#infoJuego .comoSeJuega{
+  font-size:24px;
+}
+
+#comoSeJuegaTitulo{
+  font-weight: bold;
+}
+
+.botonInfoJuego{
+  font-weight: bold;
+  padding:10px;
+  align-items:flex-start;
+  font-size:16px;
+  margin:5px;
+  border-radius:7px;
+  cursor: pointer;
+}
+
+#botonJugar{
+  overflow: hidden;
+}

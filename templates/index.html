@@ -1,1 +1,40 @@
 {%extends 'BASE.html'%}
+{%block CSS%}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/style/index.css') }}">
+{%endblock%}
+{%block ARTICLE%}
+<!--MENU DE CAMBIO DE ODS-->
+<div id="menuCambio">
+    <button onclick="juegoAnterior()" class="botonCambioDeODS"> ◄ </button>
+    <img src="{{ url_for('static', filename='img/index/ODS2.png') }}" class="ImagenODS" id="2img"/>
+    <img src="{{ url_for('static', filename='img/index/ODS5.png') }}" class="ImagenODS"id="5img" hidden/>
+    <img src="{{ url_for('static', filename='img/index/ODS7.png') }}" class="ImagenODS"id="7img" hidden/>
+    <img src="{{ url_for('static', filename='img/index/ODS13.png') }}" class="ImagenODS"id="13img" hidden/>
+    <button onclick="juegoSiguiente()" class="botonCambioDeODS"> ► </button>
+  </div>
+<!--fin MENU DE CAMBIO DE ODS-->
+
+<!--INFORMACION DEL JUEGO-->
+<div id="infoJuego">
+  <p id="tituloJuego">{{ tituloJuego }}</p>
+  <p id="comoSeJuegaTitulo"class="comoSeJuega">¿Cómo se Juega?</p>
+  <p id="comoSeJuega" class="comoSeJuega">{{ comoSeJuega }}</p>
+  <div>
+    <a href="{{ url_for('advertencia', ODS=2, tituloJuego=tituloJuego) }}" id="botonJugar"><button class="a">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>Jugar</button></a>
+    
+    <a href="https://www.un.org/sustainabledevelopment/es/wp-content/uploads/sites/3/2016/10/2_Spanish_Why_it_Matters.pdf" id="botonInfo"><button class="b">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>Informate</button></a>
+  <div>
+</div>
+<!--fin INFORMACION DEL JUEGO-->
+{%endblock%}
+{%block JS%}
+<script src="static/script/index.js" ></script>
+{%endblock%}

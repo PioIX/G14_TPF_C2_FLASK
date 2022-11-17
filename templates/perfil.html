@@ -1,0 +1,25 @@
+{%extends 'BASE.html'%}
+{%block CSS%}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/style/perfil.css') }}">
+{%endblock%}
+{%block ARTICLE%}
+<div id="seccion1">
+  <img src="{{ url_for('static', filename='img/BASE/fotoUsuario.png') }}" id="fotoUsuarioPerfil"/>
+  <br/>
+  <a href="{{ url_for('ingresarCuenta', proceso='cerrarSesion') }}"><button class="a">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>Cerrar Sesión</button></a>
+</div>
+
+<div id="datosPerfil">
+  <h1>@{{usuario}}</h1>
+  <h2>Juegos Jugados</h2>
+  <div id="juegosJugados">
+    {% for i in range(cantidadJuegosCompletados) %}
+      <img src="/static/img/index/ODS{{juegosCompletados[i][0]}}.png" class="ImagenODS"/>
+    {% endfor %}
+  </div>
+</div>
+{%endblock%}

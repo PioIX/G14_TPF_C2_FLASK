@@ -1,0 +1,316 @@
+*{
+  font-family: 'Open Sans', sans-serif;
+}
+
+html {
+  min-height: 100%;
+  position: relative;
+}
+
+article{
+  min-height: calc(100vh - 50px - 218px - 37px);
+}
+
+header{
+  display:flex;
+  height: 190px;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px;
+}
+
+#logo{
+  display:flex;
+  height:150px;
+}
+
+.nav{
+  display:flex;
+  align-items:center;
+}
+
+#botonIniciarSesion{
+  margin-right:5px;
+}
+
+#botonRegistrarse{
+  overflow:hidden;
+}
+
+#registrado{
+  display:flex;
+  align-items:center;
+}
+
+#registrado div{
+  display:flex;
+  align-items:center;
+}
+
+#usuario{
+  font-size:18px;
+  font-weight:bold;
+}
+
+#fotoUsuario{
+  height:80px;
+  padding:10px;
+}
+
+#botonDesarollador{
+  margin-right:75px;
+}
+
+a{
+  text-decoration:none;
+  color:black;
+}
+
+footer{
+  background-color:#ebebeb;
+  height:70px;
+  width: 100%;
+}
+
+.a{
+    position: relative;
+    color: #000000;
+    background: #e11485;
+    padding: 10px 10px;
+    transition: .5s;
+    cursor:pointer;
+    border: none;
+    transition: .5s;
+    border-radius: 7px;
+    overflow: hidden;
+    font-weight: bold;
+    align-items:flex-start;
+    font-size:18px;
+    margin-right:20px;  
+    cursor: pointer;
+}
+
+.a:hover{
+    color: #000000;
+    background: #ff0000;
+}
+
+.a span{
+    position: absolute;
+    background: #d01616;
+    transition: .5s;
+}
+
+.a span:nth-child(1){
+    width: 100%;
+    height: 3px;
+    top:0;
+    left: -100%;
+}
+
+.a span:nth-child(2){
+    width: 100%;
+    height: 3px;
+    bottom: 0;
+    right: -100%;
+}
+
+.a span:nth-child(3){
+    width: 3px;
+    height: 100%;
+    bottom: -100%;
+    right: 0;
+}
+
+.a span:nth-child(4){
+    width: 3px;
+    height: 100%;
+    top: -100%;
+    left: 0;
+}
+
+.a:hover span:nth-child(1){
+    left:0;
+    border-radius:3px;
+}
+
+.a:hover span:nth-child(2){
+    right:0;
+    border-radius:3px;
+}
+
+.a:hover span:nth-child(3){
+    bottom: 0;
+    border-radius:3px;
+}
+
+.a:hover span:nth-child(4){
+    top:0;
+    border-radius:3px;
+}
+
+.b{
+   position: relative;
+   color: #000000;
+   background:#e3dede;
+   padding: 10px 10px;
+   transition: .5s;
+   cursor:pointer;
+   border: none;
+   transition: .5s;
+   overflow: hidden;
+   border-radius: 7px;
+   overflow: hidden;
+   font-weight: bold;
+   align-items:flex-start;
+   font-size:18px;
+   margin-right:20px;  
+   cursor: pointer;
+}
+
+.b:hover{
+    color: #59105c;
+    background: #00aed9;
+}
+
+.b span{
+    position: absolute;
+    background: #37abc8;
+    transition: .5s;
+}
+
+.b span:nth-child(1){
+    width: 100%;
+    height: 3px;
+    top:0;
+    left: -100%;
+}
+
+.b span:nth-child(2){
+    width: 100%;
+    height: 3px;
+    bottom: 0;
+    right: -100%;
+}
+
+.b span:nth-child(3){
+    width: 3px;
+    height: 100%;
+    bottom: -100%;
+    right: 0;
+}
+
+.b span:nth-child(4){
+    width: 3px;
+    height: 100%;
+    top: -100%;
+    left: 0;
+}
+
+.b:hover span:nth-child(1){
+    left:0;
+    border-radius:3px;
+}
+
+.b:hover span:nth-child(2){
+    right:0;
+    border-radius:3px;
+}
+
+.b:hover span:nth-child(3){
+    bottom: 0;
+    border-radius:3px;
+}
+
+.b:hover span:nth-child(4){
+    top:0;
+    border-radius:3px;
+}
+
+#botonIndex{
+  font-weight: bold;
+  padding:10px;
+  align-items:flex-start;
+  font-size:16px;
+  margin:5px;
+  border-radius:7px;
+  cursor: pointer;
+}
+
+.c{
+   position: relative;
+   color: #000000;
+   background:#00aed9;
+   padding: 10px 10px;
+   transition: .5s;
+   cursor:pointer;
+   border: none;
+   transition: .5s;
+   overflow: hidden;
+   border-radius: 7px;
+   overflow: hidden;
+   font-weight: bold;
+   align-items:flex-start;
+   font-size:18px;
+   margin-right:20px;  
+   cursor: pointer;
+}
+
+.c:hover{
+    color: #183668;
+    background: #64bf4b;
+}
+
+.c span{
+    position: absolute;
+    background: #64bf4b;
+    transition: .5s;
+}
+
+.c span:nth-child(1){
+    width: 100%;
+    height: 3px;
+    top:0;
+    left: -100%;
+}
+
+.c span:nth-child(2){
+    width: 100%;
+    height: 3px;
+    bottom: 0;
+    right: -100%;
+}
+
+.c span:nth-child(3){
+    width: 3px;
+    height: 100%;
+    bottom: -100%;
+    right: 0;
+}
+
+.c span:nth-child(4){
+    width: 3px;
+    height: 100%;
+    top: -100%;
+    left: 0;
+}
+
+.c:hover span:nth-child(1){
+    left:0;
+    border-radius:3px;
+}
+
+.c:hover span:nth-child(2){
+    right:0;
+    border-radius:3px;
+}
+
+.c:hover span:nth-child(3){
+    bottom: 0;
+    border-radius:3px;
+}
+
+.c:hover span:nth-child(4){
+    top:0;
+    border-radius:3px;
+}

@@ -1,0 +1,33 @@
+article{
+  display:flex;
+  align-items: center;
+  flex-direction: column;
+  padding:10px;
+}
+h2{
+  display:flex;
+  text-align: center;
+  font-size:38px;
+  text-decoration:bold;
+  margin-top:11%;
+}
+
+.botonInfoJuego{
+  font-weight: bold;
+  padding:10px;
+  align-items:center;
+  font-size:16px;
+  margin:5px;
+  border-radius:7px;
+  cursor: pointer;
+}
+
+#botonInfo{
+  overflow:hidden;
+}
+
+#botonJugar{
+
+  overflow:hidden;
+  border:none;
+}

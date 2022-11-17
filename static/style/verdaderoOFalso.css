@@ -1,0 +1,24 @@
+#tablero{
+    display:flex;
+    flex-direction:column;
+}
+
+#consigna{
+    font-size:24px;
+    text-align:center;
+    font-weight:bold;
+}
+
+#botonesVF{
+    text-align: center;
+}
+
+#resultadosFinales{
+    text-align:center;
+}
+
+li{
+    text-align: left;
+    font-weight: bold;
+    font-size: 18px;
+}

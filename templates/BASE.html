@@ -7,25 +7,50 @@
     <!--fin HTML-->
     
     <!--CSS-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/style/BASE.css') }}">
+    {%block CSS%}{%endblock%}
     <!--fin CSS-->
   </head>
   <body>
     <!--HEADER-->
     <header>
       <!--LOGO-->
-      <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='img/ODSgames.png') }}" id=logo></a>
+      <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='img/BASE/ODSgames.png') }}" id=logo></a>
       <!--fin LOGO-->
       
       <!--CUENTAS-->
-      <div>
-        <div id="noRegistrado">
-          <a href="#" class="botonRegistro" id="botonIniciarSesion">Iniciar Sesion</a>
-          <a href="#" class="botonRegistro" id="botonRegistrarse">Registrarse</a>
-        </div>
-        <div id="registrado" hidden>
-          <a href="#" id="Usuario">{%block USUARIO%}{%endblock%}</a><a href="#"><img src="" id="fotoUsuario"></a>
+      {% if estadoCuenta==False %}
+        <div class="nav">
+          <div id="noRegistrado">
+            <a href="{{ url_for('ingresarCuenta', proceso='loguearse') }}"><button  class="b" id="botonIniciarSesion"><span></span>
+              <span></span>
+              <span></span>
+              <span></span>Iniciar Sesión</button></a>
+            <a href="{{ url_for('ingresarCuenta', proceso='reguistrarse') }}"><button class="a" id="botonRegistrarse">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>Registrarse
+            </button></a>
+          </div>
+      {% else %}
+        <div id="registrado">
+          {% if usuario=="admin"%}
+          <a href="{{ url_for('opcionesDeDesarrollador') }}"><button  class="b" id="botonDesarollador"><span></span>
+              <span></span>
+              <span></span>
+              <span></span>Opciones de<br/>Desarrollador {}</button></a>
+          {% endif %}
+          <div>
+          <a href="{{ url_for('perfil') }}" id="usuario">@{{usuario}}</a><a href="{{ url_for('perfil') }}"><img src="{{ url_for('static', filename='img/BASE/fotoUsuario.png') }}" id="fotoUsuario"></a>
+          </div>
+          
         </div>
       </div>
+      {% endif %}
       <!--fin CUENTAS-->
     </header>
     <!--fin HEADER-->
@@ -39,8 +64,16 @@
     
     <!--FOOTER-->
     <footer>
+      <h3>Integrantes: Federico Alegre, Martina Fiotto, Solana Perez e Ivan Sanchez <br/>
+        Curso: 5to B Informatica 
+      </h3>
       
     </footer>
     <!--fin FOOTER-->
+    
+    <!--JS-->
+    {%block JS%}{%endblock%}
+    <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" ></script>
+    <!--fin JS-->
   </body>
 </html>

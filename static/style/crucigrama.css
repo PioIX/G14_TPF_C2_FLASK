@@ -1,0 +1,77 @@
+*{
+  font-family: 'Open Sans', sans-serif;
+}
+
+.casilla {
+  width: 25px;
+  height: 25px;
+  background-color:#d6d6d6;
+  border: 2px solid transparent;
+  border-radius:5px;
+  text-align:center;
+}
+
+.letra{
+  border-color:grey;
+  background-color:#ffffff;
+}
+
+.espacio{
+  border-color:black;
+  background-color:black;
+}
+
+.correcto{
+  background-color: #64bf4b;
+  border-color: #64bf4b;
+  transition: all 0.4s ease-in-out;
+}
+
+.incorrecto{
+  background-color:#FF0000;
+  border-color:#FF0000;
+  transition: all 0.4s ease-in-out;
+}
+
+.botonF{
+  background-color:#FF0000;
+  border-color: transparent;
+}
+
+.columna-md-12 {
+  padding:38%;
+  
+}
+
+.tabla {
+  width: 300px;
+  display:flex;
+}
+
+.tabla tr{
+  display:flex;
+}
+
+.tabla td,
+  th {
+  padding: 0;
+}
+
+#contenidoCrucigrama{
+  display:flex;
+  flex-wrap:nowrap;
+}
+
+#consignas ol li{
+  font-size:20px;
+}
+
+#botones {
+  display:flex;
+  justify-content:center;
+}
+
+#mensaje{
+  display:flex;
+  justify-content:center;
+}
