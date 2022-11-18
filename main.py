@@ -174,6 +174,14 @@ def BaseDesarrollador():
   else:
     pass
 
+@app.route('/baseDesarrollador/<parteBase>/<int:ods>', methods=['GET', 'PUT'])
+def cambiarTablaJuegos(parteBase, ods):
+    if request.method == 'PUT':
+      conn=sqlite3.connect('ODSGames.db')
+      conn.execute(f'''UPDATE consignas SET {parteBase}={request.method['parteACambiar']} WHERE ods= {ods}''')
+      conn.commit()
+      return redirect(url_for('opcionesDeDesarrollador'))
+      
 ##JUEGOS
 @app.route('/crucigramaAjax')
 def crucigramaAjax():
@@ -183,6 +191,7 @@ def crucigramaAjax():
   for i in range(len(respuestas)):
     datos.append(respuestas[i][0])
   return jsonify(datos)
+  
 
 @app.route('/verdaderoOFalsoAjax')
 def verdaderoOFalsoAjax():

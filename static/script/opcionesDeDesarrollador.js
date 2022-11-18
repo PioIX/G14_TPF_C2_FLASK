@@ -89,7 +89,9 @@ alert(`${juego}, ${parteBase}, ${accion} `)
         }
       })
     } else if (accion=='PUT'){
-      if (parteBase != "titulo" || parteBase != "comoSeJuega"){
+      if (parteBase == "titulo" || parteBase == "comoSeJuega"){
+        document.getElementById('accion').innerHTML = `<form action="cambiarTablaJuegos('${parteBase}',${juego})" Method='PUT'><lebel for="parteACambiar">cambio: </lebel><input name="parteACambiar" class="datoIngresarCuenta" type="text"/><br/><br/><button type="submit" class="b">Agregar Pregunta</button></form>`
+      } else {
         $.ajax({
         url:'/baseDesarrollador',
         method: 'POST',
@@ -102,8 +104,6 @@ alert(`${juego}, ${parteBase}, ${accion} `)
           console.log(error)
         }
       })
-      } else {
-        document.getElementById('accion').innerHTML=`<form action="cambiarTablaJuegos()" Method=${accion}><lebel for="parteACambiar">cambio: </lebel><input name="parteACambiar" class="datoIngresarCuenta" type="text"/><br/><button type="submit" class="b">Agregar Pregunta</button></form>`
       }
       
     }
