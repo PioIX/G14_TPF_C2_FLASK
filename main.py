@@ -103,22 +103,28 @@ def crucigrama():
   extraerLeyendas = '''SELECT leyenda FROM consignas WHERE ods=2'''
   leyendas = conn.execute(extraerLeyendas).fetchall()
   return render_template('crucigrama.html',leyendas=leyendas, numeroLeyendas=len(leyendas), usuario=session['usuario'], estadoCuenta=session['estadoCuenta'])
-                         
-@app.route('/sopaDeLetras')
-def sopaDeLetras():
-  return render_template('sopaDeLetras.html',usuario=session['usuario'], estadoCuenta=session['estadoCuenta'])  
-
-@app.route('/ahorcado')
-def ahorcado():
-  return render_template('ahorcado.html',usuario=session['usuario'],estadoCuenta=session['estadoCuenta'])
-
 @app.route('/verdaderoOFalso')
+
 def verdaderoOFalso():  
   conn = sqlite3.connect('ODSGames.db')
   extraerPrimerConsigna = '''SELECT leyenda FROM consignas WHERE ods=5 LIMIT 1'''
   consigna = conn.execute(extraerPrimerConsigna).fetchone()[0]
   
   return render_template('verdaderoOFalso.html', usuario=session['usuario'],estadoCuenta=session['estadoCuenta'],consigna=consigna)
+  
+@app.route('/sopaDeLetras')
+def sopaDeLetras():
+  return render_template('sopaDeLetras.html',usuario=session['usuario'], estadoCuenta=session['estadoCuenta'])  
+
+@app.route('/ahorcado')
+def ahorcado():
+  conn = sqlite3.connect('ODSGames.db')
+  extraerPrimerConsigna = '''SELECT respuesta,leyenda FROM consignas WHERE ods=13 LIMIT 1'''
+  consigna = conn.execute(extraerPrimerConsigna).fetchall()
+  longitudPalabra = len(consigna[0][0])
+  return render_template('ahorcado.html',usuario=session['usuario'],estadoCuenta=session['estadoCuenta'], consigna=consigna,longitudPalabra=longitudPalabra)
+
+
 ## AJAX
   ##INDEX
 @app.route('/extraerDatosDelJuego', methods=["GET","POST"])
@@ -151,7 +157,12 @@ def agregarJuegoCompleto():
 def BaseDesarrollador():
   conn=sqlite3.connect('ODSGames.db')
   if request.method == 'POST':
-    pass
+    if request.form['accion'] == 'GET':
+      if request.form["parteBase"]=="leyenda" or request.form["parteBase"]=="respuesta":
+        varFrom = "consignas"
+      else:
+        varFrom = "juegos"
+      return jsonify(conn.execute(f'''SELECT {request.form["parteBase"]} FROM {varFrom} WHERE ods={request.form["ods"]}''').fetchall())
   elif request.method == 'GET':
     cuentas = conn.execute('SELECT cuenta FROM usuarios').fetchall()
     return jsonify(cuentas)
@@ -179,4 +190,10 @@ def verdaderoOFalsoAjax():
   consignas = conn.execute('''SELECT respuesta, leyenda FROM consignas WHERE ods=5''').fetchall()
   return jsonify(consignas)
 
+@app.route('/ahorcadoAjax')
+def ahorcadoAjax():
+  conn = sqlite3.connect('ODSGames.db')
+  consignas = conn.execute('''SELECT respuesta, leyenda FROM consignas WHERE ods=13''').fetchall()
+  return jsonify(consignas)
+  
 app.run(host='0.0.0.0', port=81)

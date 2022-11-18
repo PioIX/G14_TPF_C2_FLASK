@@ -8,6 +8,11 @@ main{
   display:inline-block;
 }
 
+#numeroIntentos{
+  font-weight: bold;
+  text-align:center;
+}
+
 #tablero{
   display:flex;
   flex-direction:column;
@@ -39,4 +44,20 @@ main{
 #palabraAdivinar span {
   font-size: 2em;
   border-bottom: 1px solid black;
+  width:30px;
+  text-align: center;
+}
+
+.espacio{
+  color:white;
+}
+
+#mensaje{
+  color:#e11484;
+  font-weight:bold;
+}
+
+#botonIndex{
+  display: flex;
+  justify-content: center;
 }

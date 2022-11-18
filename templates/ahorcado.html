@@ -3,55 +3,71 @@
 <link rel="stylesheet" type="text/css" href="{{url_for ('static', filename='/style/ahorcado.css' )}}">
 {%endblock%}
 {%block ARTICLE%}
-<main>
-  <img src="{{ url_for('static', filename='img/intentosAhorcado/intento2.png') }}" id="intentos">
+<main >
+  <div id="personaje">
+    <img src="{{ url_for('static', filename='img/intentosAhorcado/intento0.png') }}" id="intentos">
+    <p id="numeroIntentos">Personajes usados: 0</p>
+  </div>
+  
   <div id="tablero">
     <div>
-    <p id="palabraAdivinar"><span>_</span><span>_</span><span>_</span><span>_</span>
+    <p id="palabraAdivinar">
+      {% for i in range (longitudPalabra)%}
+      {% if (consigna[0][0])[i] == " " %}
+      <span class="espacio" id="{{i}}"> | </span>
+      {% else %}
+      <span id="{{i}}"> - </span>
+      {% endif %}
+      {% endfor %}
     </p>
   </div>
     <div id="qwerty">
       <div class="qwerty">
-      <button>q</button>
-      <button>w</button>
-      <button>e</button>
-      <button>r</button>
-      <button>t</button>
-      <button>y</button>
-      <button>u</button>
-      <button>i</button>
-      <button>o</button>
-      <button>p</button>
+      <button onclick="corroborar('q')">q</button>
+      <button onclick="corroborar('w')">w</button>
+      <button onclick="corroborar('e')">e</button>
+      <button onclick="corroborar('r')">r</button>
+      <button onclick="corroborar('t')">t</button>
+      <button onclick="corroborar('y')">y</button>
+      <button onclick="corroborar('u')">u</button>
+      <button onclick="corroborar('i')">i</button>
+      <button onclick="corroborar('o')">o</button>
+      <button onclick="corroborar('p')">p</button>
       </div>
       <div class="qwerty">
-      <button>a</button>
-      <button>s</button>
-      <button>d</button>
-      <button>f</button>
-      <button>g</button>
-      <button>h</button>
-      <button>j</button>
-      <button>k</button>
-      <button>l</button>
+      <button onclick="corroborar('a')">a</button>
+      <button onclick="corroborar('s')">s</button>
+      <button onclick="corroborar('d')">d</button>
+      <button onclick="corroborar('f')">f</button>
+      <button onclick="corroborar('g')">g</button>
+      <button onclick="corroborar('h')">h</button>
+      <button onclick="corroborar('j')">j</button>
+      <button onclick="corroborar('k')">k</button>
+      <button onclick="corroborar('l')">l</button>
       <button>ñ</button>
       </div>
       <div class="qwerty">
-      <button>z</button>
-      <button>x</button>
-      <button>c</button>
-      <button>v</button>
-      <button>b</button>
-      <button>n</button>
-      <button>m</button>
+      <button onclick="corroborar('z')">z</button>
+      <button onclick="corroborar('x')">x</button>
+      <button onclick="corroborar('c')">c</button>
+      <button onclick="corroborar('v')">v</button>
+      <button onclick="corroborar('b')">b</button>
+      <button onclick="corroborar('n')">n</button>
+      <button onclick="corroborar('m')">m</button>
       </div>
     </div>
     <br/>
+    <p id="mensaje" hidden> {{consigna[0][1]}} </p>
+    <br/>
     <div>
-      <button class="a" id="juegoAhorcado"><span></span><span></span><span></span><span></span>Palabra a adivinar</button>
+      <button class="a" id="juegoAhorcado" onclick="nuevaPalabra()"hidden><span></span><span></span><span></span><span></span>Siguiente palabra</button>
+      <button class="b" id="pista" onclick="pista()"><span></span><span></span><span></span><span></span>Pista</button>
+      <button class="c" id="resetearPersonaje" onclick="resetearMonigote()" hidden><span></span><span></span><span></span><span></span>Resetear personaje</button>
     </div>
   </div>
   
 </main>
 {%endblock%}
 {%block JS%}
+<script src="/static/script/ahorcado.js"></script>
 {%endblock%}

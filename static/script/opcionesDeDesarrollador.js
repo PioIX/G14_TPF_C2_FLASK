@@ -65,14 +65,48 @@ function cambioDeAccion(seccion){
     } else {
       accion = 'DELETE'
     }
-
+alert(`${juego}, ${parteBase}, ${accion} `)
     if ((juego==2&&((parteBase=="leyenda"&&(accion=='POST'||accion=='DELETE'))||(parteBase=="respuesta"&&(accion=='POST'||accion=='PUT'||accion=='DELETE'))))||(juego==7&&((parteBase=='leyenda'&&(accion=='GET'||accion=='POST'||accion=='PUT'||accion=='DELETE'))||(parteBase=='respuesta'&&(accion=='POST'||accion=='PUT'||accion=='DELETE'))))||((parteBase=='titulo'||parteBase=='comoSeJuega')&&(accion=='POST'||accion=='DELETE'))){
       document.getElementById('accion').innerHTML = '<h1 id="accionNoDisponible"> Accion no disponible :( </h1>'
-    } else if ((juego==5||juego==13)&&(accion=='POST'||accion=='DELETE')) {
+    } else if ((juego==5||juego==13)&&(accion=='POST'||accion=='DELETE')){
         if(accion=='POST'){
           document.getElementById('accion').innerHTML=`<form action="agregarConsigna(${juego})" Method=${accion}><lebel for="leyendaAAgregar">Leyenda: </lebel><input name="leyendaAAgregar" class="datoIngresarCuenta" type="text"/><br/><lebel for="respuestaAAgregar">Respuesta: </lebel><input name="respuestaAAgregar" class="datoIngresarCuenta" type="text"/><br/><button type="submit" class="b">Agregar Pregunta</button></form>`
         }
-    } 
+    } else if (accion=='GET'){
+      $.ajax({
+        url:'/baseDesarrollador',
+        method: 'POST',
+        data:{"parteBase":parteBase, "ods":juego, "accion":accion},
+        success:function(response){
+          datos=response
+          document.getElementById('accion').innerHTML = ''
+          for (let i = 0; i<datos.length; i++){
+              document.getElementById('accion').innerHTML += `<li>${datos[i][0]}</li>`
+            }
+        },
+        error:function(error){
+          console.log(error)
+        }
+      })
+    } else if (accion=='PUT'){
+      if (parteBase != "titulo" || parteBase != "comoSeJuega"){
+        $.ajax({
+        url:'/baseDesarrollador',
+        method: 'POST',
+        data:{"parteBase":parteBase, "ods":juego, "accion":'GET'},
+        success:function(response){
+          datos=response
+          document.getElementById('accion').innerHTML = ''
+        },
+        error:function(error){
+          console.log(error)
+        }
+      })
+      } else {
+        document.getElementById('accion').innerHTML=`<form action="cambiarTablaJuegos()" Method=${accion}><lebel for="parteACambiar">cambio: </lebel><input name="parteACambiar" class="datoIngresarCuenta" type="text"/><br/><button type="submit" class="b">Agregar Pregunta</button></form>`
+      }
+      
+    }
   }
 }
 
