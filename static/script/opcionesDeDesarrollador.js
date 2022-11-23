@@ -134,8 +134,9 @@ alert(`${juego}, ${parteBase}, ${accion} `)
         </form>`
       } else {
         document.getElementById('accion').innerHTML = `<form action="/cambiarTablaConsignas" method='POST'>
-        <lebel for="parteOriginal">parte a cambiar: </lebel>
+        <lebel for="parteOriginal">parte a cambiar: </lebel> 
         <select name="parteOriginal" id="parteOriginal"></select>
+        <br/><br/>
         <lebel for="parteACambiar">cambio: </lebel>
         <input name="parteACambiar" class="datoIngresarCuenta" type="text"/>
         <br/><br/>
