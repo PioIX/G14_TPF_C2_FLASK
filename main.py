@@ -153,7 +153,7 @@ def agregarJuegoCompleto():
     return jsonify(True)
     
   ##OPCIONES DE DESARROLLADOR
-@app.route('/baseDesarrollador', methods=['GET','POST','DELETE','PUT'])
+@app.route('/baseDesarrollador', methods=['GET','POST','DELETE'])
 def BaseDesarrollador():
   conn=sqlite3.connect('ODSGames.db')
   if request.method == 'POST':
@@ -171,17 +171,47 @@ def BaseDesarrollador():
     conn.execute(f'''DELETE FROM juegosJugados WHERE cuenta="{request.form['cuenta']}"''')
     conn.commit()
     return jsonify(True)
-  else:
-    pass
 
-@app.route('/baseDesarrollador/<parteBase>/<int:ods>', methods=['GET', 'PUT'])
-def cambiarTablaJuegos(parteBase, ods):
-    if request.method == 'PUT':
-      conn=sqlite3.connect('ODSGames.db')
-      conn.execute(f'''UPDATE consignas SET {parteBase}={request.method['parteACambiar']} WHERE ods= {ods}''')
-      conn.commit()
-      return redirect(url_for('opcionesDeDesarrollador'))
-      
+@app.route('/cambiarTablaJuegos', methods=['GET', 'POST'])
+def cambiarTablaJuegos():
+  if request.method == 'POST':
+    conn=sqlite3.connect('ODSGames.db')
+    conn.execute(f'''UPDATE juegos SET '{request.form['parteBase']}'='{request.form['parteACambiar']}' WHERE ods={int(request.form['ods'])}''')
+    conn.commit()
+    return redirect('/desarrollador')
+  else:
+    return redirect('/')
+
+@app.route('/cambiarTablaConsignas', methods=['GET', 'POST'])
+def cambiarTablaConsignas():
+  if request.method == 'POST':
+    conn=sqlite3.connect('ODSGames.db')
+    conn.execute(f'''UPDATE consignas SET "{request.form['parteBase']}"="{request.form['parteACambiar']}" WHERE ods={int(request.form['ods'])} AND "{request.form['parteBase']}"="{request.form['parteOriginal']}"''')
+    conn.commit()
+    return redirect('/desarrollador')
+
+@app.route('/agregarConsigna', methods=['GET', 'POST'])
+def agregarConsigna():
+  if request.method == 'POST':
+    conn=sqlite3.connect('ODSGames.db')
+    conn.execute(f'''INSERT INTO consignas (ods, leyenda, respuesta) VALUES ({int(request.form['ods'])},"{request.form['leyendaAAgregar']}","{request.form['respuestaAAgregar']}")''')
+    conn.commit()
+    return redirect('/desarrollador')
+
+@app.route('/eliminarConsigna', methods=['GET', 'POST'])
+def eliminarConsigna():
+  if request.method == 'POST':
+    conn=sqlite3.connect('ODSGames.db')
+    conn.execute(f'''DELETE FROM consignas WHERE (leyenda="{request.form['leyendaAEliminar']}" AND ods={int(request.form['ods'])})''')
+    conn.commit()
+    return redirect('/desarrollador')
+
+@app.route('/obtenerDatosConsignas', methods=['GET', 'POST'])
+def obtenerDatosConsignas():
+  if request.method == 'POST':
+    conn=sqlite3.connect('ODSGames.db')
+    return jsonify(conn.execute(f'''SELECT leyenda FROM consignas WHERE ods={request.form["ods"]}''').fetchall())
+
 ##JUEGOS
 @app.route('/crucigramaAjax')
 def crucigramaAjax():
